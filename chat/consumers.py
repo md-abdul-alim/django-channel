@@ -19,7 +19,8 @@ class MainConsumer(WebsocketConsumer):
         }))
 
     def receive(self, text_data=None, bytes_data=None):
-        pass
+        print(type(text_data))
 
     def disconnect(self, code):
+        print('Disconnected: ', code)
         pass
