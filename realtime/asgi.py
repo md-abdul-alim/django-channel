@@ -13,6 +13,7 @@ from pizza import consumers
 
 websocket_urlpatterns = [
     path("ws/main/", consumers.MainConsumer.as_asgi()),
+    path("ws/pizza/<order_id>/", consumers.PizzaConsumer.as_asgi()),
             
 ]
 
@@ -22,8 +23,6 @@ application = ProtocolTypeRouter({
 
     # WebSocket pizza handler
     "websocket": (
-
-            URLRouter(websocket_urlpatterns)
-        
+        URLRouter(websocket_urlpatterns)  
     ),
 })
