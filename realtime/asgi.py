@@ -19,7 +19,7 @@ websocket_urlpatterns = [
 ]
 
 application = ProtocolTypeRouter({
-    # Django's ASGI application to handle traditional HTTP requests
+    # Django's ASGI application to handle traditional HTTP/HTTPS requests
     "http": django_asgi_app,
 
     # WebSocket pizza handler
