@@ -69,7 +69,7 @@ class Order(models.Model):
 
 
 @receiver(post_save, sender=Order)
-def order_status_handler(sender, instance, created, **kwargs):
+def sync_order_status_handler(sender, instance, created, **kwargs):
     if not created:
         channel_layer = get_channel_layer()
         data = {
@@ -82,7 +82,7 @@ def order_status_handler(sender, instance, created, **kwargs):
 
         async_to_sync(channel_layer.group_send)(
             f'order_{instance.order_id}',{
-                'type': 'order_status',
+                'type': 'sync_order_status',
                 'value': json.dumps(data)
             }
         )

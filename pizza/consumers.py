@@ -27,7 +27,7 @@ class MainConsumer(WebsocketConsumer):
         pass
 
 
-class PizzaConsumer(WebsocketConsumer):
+class PizzaConsumerSync(WebsocketConsumer):
     
     def connect(self, **kwargs):
         self.room_name = self.scope['url_route']['kwargs']['order_id']
@@ -44,7 +44,7 @@ class PizzaConsumer(WebsocketConsumer):
             "payload": order
         }))
     
-    def order_status(self, event):
+    def sync_order_status(self, event):
         data = json.loads(event['value'])
 
         self.send(text_data=json.dumps({

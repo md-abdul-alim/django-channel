@@ -13,7 +13,7 @@ from pizza import consumers
 
 websocket_urlpatterns = [
     path("ws/main/", consumers.MainConsumer.as_asgi()),
-    path("ws/pizza/<order_id>/", consumers.PizzaConsumer.as_asgi()),
+    path("ws/pizza/<order_id>/", consumers.PizzaConsumerSync.as_asgi()),
             
 ]
 
