@@ -49,6 +49,10 @@ class PizzaConsumer(WebsocketConsumer):
         data = json.loads(event['value'])
         print(data)
 
+        self.send(text_data=json.dumps({
+            "payload": data
+        }))
+
     def receive(self, text_data=None, bytes_data=None):
         print(type(text_data))
 
