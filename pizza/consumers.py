@@ -45,9 +45,7 @@ class PizzaConsumer(WebsocketConsumer):
         }))
     
     def order_status(self, event):
-        print(event)
         data = json.loads(event['value'])
-        print(data)
 
         self.send(text_data=json.dumps({
             "payload": data
