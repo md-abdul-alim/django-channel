@@ -1,0 +1,24 @@
+<script>
+    var order_id = '{{order.order_id}}'
+    let socket = new WebSocket(`ws://localhost:8000/ws/pizza/${order_id}`)
+
+    socket.onopen = function(e){
+        console.log("Connection Established")
+    }
+
+    socket.onmessage = function (e){
+        var data = JSON.parse(e.data)
+        var value = data.payload.progress_percentage
+        var status = data.payload.status
+
+        changeUI(value, status)
+    }
+
+    function changeUI(value, status){
+        var progress = document.querySelector('.progress-bar')
+        var status_html = document.querySelector('#status')
+
+        status_html.innerHTML = status
+        progress.style.width = value + "%"
+    }
+</script>

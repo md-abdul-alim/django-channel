@@ -34,4 +34,4 @@ CHANNEL_LAYERS = {
 # for testing websocket request use websocket king: https://websocketking.com/
 => Test url by like: ws://localhost:8000/ws/main/
 
-''.join(random.choices(string.ascii_letters, k=7))
+=> real time data send: ws://localhost:8000/ws/pizza/IaadKvJ/
